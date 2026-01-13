@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Uploady AI - Pi App</title>
+
+  <!-- Pi SDK -->
+  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+  <script>
+    Pi.init({ version: "2.0" });
+  </script>
+</head>
+
+<body>
+  <h1>Uploady AI</h1>
+  <button onclick="login()">Login with Pi</button>
+
+  <script>
+    function login() {
+      Pi.authenticate(
+        ["username", "payments"],
+        function (auth) {
+          console.log("Authenticated:", auth);
+          alert("Welcome " + auth.user.username);
+        },
+        function (error) {
+          console.error(error);
+        }
+      );
+    }
+  </script>
+</body>
+</html>
