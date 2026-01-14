@@ -4,55 +4,50 @@
   <meta charset="UTF-8" />
   <title>Uploady AI</title>
 
-  <!-- Pi SDK --> 
+  <!-- Pi SDK (مرة واحدة فقط) -->
   <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+
   <script>
-    Pi.init({ version: "2.0" });
-  </script>
-  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
-<script>
-  Pi.init({ version: "2.0", sandbox: true })
-</script>
-  <script>
-  function loginWithPi() {
-    Pi.authenticate(
-      ['username'],
-      function(auth) {
-        console.log('Authenticated:', auth);
-        alert("Welcome " + auth.user.username);
-      },
-      function(error) {
-        console.error(error);
-        alert("Auth failed");
+    // تأكد إن الصفحة اتحمّلت
+    document.addEventListener("DOMContentLoaded", function () {
+
+      if (typeof Pi === "undefined") {
+        alert("Pi SDK NOT loaded");
+        return;
       }
-    );
-  }
-</script>
+
+      // Initialize Pi (مرة واحدة)
+      Pi.init({
+        version: "2.0",
+        sandbox: true
+      });
+
+      console.log("Pi SDK initialized");
+    });
+
+    // دالة Login واحدة فقط
+    function loginWithPi() {
+      Pi.authenticate(
+        ["username"],
+        function (auth) {
+          console.log(auth);
+          alert("Welcome " + auth.user.username);
+        },
+        function (error) {
+          console.error(error);
+          alert("Authentication failed");
+        }
+      );
+    }
+  </script>
 </head>
 
 <body>
   <h2>Uploady AI</h2>
 
-  <button onclick="login()">Login with Pi</button>
-
-  <script>
-    let currentUser = null;
-
-    function login() {
-      Pi.authenticate(
-        ["username", "payments"],
-        function (auth) {
-          currentUser = auth.user;
-          alert("Welcome " + auth.user.username);
-        },
-        function (error) {
-          console.error(error);
-        }
-      );
-    }
-  </script>
+  <!-- زرار واحد فقط -->
   <button onclick="loginWithPi()">
-  Login with Pi
-</button>
+    Login with Pi
+  </button>
 </body>
 </html>
