@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   try {
     const response = await fetch(`https://api.minepi.com/v2/payments/${paymentId}`, {
       headers: {
-        Authorization: `Key ${process.env.PI_API_KEY}`, // ضع الـ API Key في إعدادات Vercel
+        Authorization: `Key ${process.env.PI}`, // ضع الـ API Key في إعدادات Vercel
       },
     });
 
