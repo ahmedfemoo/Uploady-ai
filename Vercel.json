@@ -1,9 +1,1 @@
-{
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "destination": "https://sandbox.minepi.com/app/uploady-ai-804f7de47ed29b93/$1",
-      "permanent": true
-    }
-  ] 
-}
+
