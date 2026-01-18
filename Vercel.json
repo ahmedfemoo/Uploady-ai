@@ -2,7 +2,7 @@
   "redirects": [
     {
       "source": "/(.*)",
-      "destination": "https://wallet.pinet.com/$1",
+      "destination": "https://sandbox.minepi.com/app/uploady-ai-804f7de47ed29b93/$1",
       "permanent": true
     }
   ]
